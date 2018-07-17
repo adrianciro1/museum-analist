@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/libs-release" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+
+group 'com.adrian.museum'
+version '1.0'
+
+jar {
+    baseName = 'museum'
+    version =  '1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile "org.projectlombok:lombok:1.16.20"
+    compile("org.springframework:spring-context")
+
+    testCompile("org.springframework:spring-test")
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+
+}
